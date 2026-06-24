@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useQuery } from "@apollo/client/react";
 import { gql, TypedDocumentNode } from "@apollo/client";
 
@@ -27,7 +28,12 @@ export default function UsersPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold mb-4">Users</h1>
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-2xl font-semibold">Users</h1>
+        <Link href="/users/new" className="bg-black text-white rounded px-4 py-2 text-sm">
+          Create User
+        </Link>
+      </div>
       <ul className="flex flex-col gap-2">
         {data?.users.map((user) => (
           <li key={user.id} className="border rounded p-4">
