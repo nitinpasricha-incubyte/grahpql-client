@@ -10,7 +10,7 @@ type User = {
   email: string;
 };
 
-const GET_USERS: TypedDocumentNode<{ users: User[] }> = gql`
+export const GET_USERS: TypedDocumentNode<{ users: User[] }> = gql`
   query GetUsers {
     users {
       id

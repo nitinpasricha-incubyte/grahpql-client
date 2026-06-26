@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { gql, TypedDocumentNode } from "@apollo/client";
+import { GET_USERS } from "../page";
 
 type User = {
   id: string;
@@ -33,7 +34,9 @@ export default function NewUserPage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
-  const [createUser, { loading, error }] = useMutation(CREATE_USER);
+  const [createUser, { loading, error }] = useMutation(CREATE_USER, {
+    refetchQueries: [{ query: GET_USERS }],
+  });
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
